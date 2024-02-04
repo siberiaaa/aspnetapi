@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "9vj8Qb8FE99Xj9lz+WwWEJ4GTrxUaa3d5MWsBanMdYCACKAqF5VMWvwUigr0DXXbSRqC8zY30zlZFbgcW9O+vw==",
+  "success": true,
+  "projectFilePath": "D:\\Siberia\\Estudios\\Gracosoft\\Nivel III\\Siberia 3\\ASP.NET Core\\Proyecto Clase\\Services\\Services.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Siberia\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512"
+  ],
+  "logs": []
+}

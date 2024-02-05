@@ -11,8 +11,8 @@ public class CharacterRepository : BaseRepository<Character>, ICharacterReposito
 
     }
 
-    public Task LevelUp(Character character)
-    {
-        throw new NotImplementedException();
-    }
+    // public Task LevelUp(Character character)
+    // {
+    //     throw new NotImplementedException();
+    // }
 }

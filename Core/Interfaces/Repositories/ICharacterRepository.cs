@@ -4,5 +4,5 @@ namespace Core.Interfaces.Repositories;
 
 public interface ICharacterRepository : IBaseRepository<Character>
 {
-    Task LevelUp(Character character);
+    // Task LevelUp(Character character);
 }

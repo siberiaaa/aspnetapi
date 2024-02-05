@@ -13,3 +13,4 @@ D:\Siberia\Estudios\Gracosoft\Nivel III\Siberia 3\ASP.NET Core\Proyecto Clase\Se
 D:\Siberia\Estudios\Gracosoft\Nivel III\Siberia 3\ASP.NET Core\Proyecto Clase\Services\bin\Debug\net8.0\Core.pdb
 D:\Siberia\Estudios\Gracosoft\Nivel III\Siberia 3\ASP.NET Core\Proyecto Clase\Services\obj\Debug\net8.0\Services.csproj.AssemblyReference.cache
 D:\Siberia\Estudios\Gracosoft\Nivel III\Siberia 3\ASP.NET Core\Proyecto Clase\Services\obj\Debug\net8.0\Services.csproj.CopyComplete
+D:\Siberia\Estudios\Gracosoft\Nivel III\Siberia 3\ASP.NET Core\Proyecto Clase\Services\obj\Debug\net8.0\Services.sourcelink.json

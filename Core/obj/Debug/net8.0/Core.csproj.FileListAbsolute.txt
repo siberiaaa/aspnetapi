@@ -9,3 +9,4 @@ D:\Siberia\Estudios\Gracosoft\Nivel III\Siberia 3\ASP.NET Core\Proyecto Clase\Co
 D:\Siberia\Estudios\Gracosoft\Nivel III\Siberia 3\ASP.NET Core\Proyecto Clase\Core\obj\Debug\net8.0\refint\Core.dll
 D:\Siberia\Estudios\Gracosoft\Nivel III\Siberia 3\ASP.NET Core\Proyecto Clase\Core\obj\Debug\net8.0\Core.pdb
 D:\Siberia\Estudios\Gracosoft\Nivel III\Siberia 3\ASP.NET Core\Proyecto Clase\Core\obj\Debug\net8.0\ref\Core.dll
+D:\Siberia\Estudios\Gracosoft\Nivel III\Siberia 3\ASP.NET Core\Proyecto Clase\Core\obj\Debug\net8.0\Core.sourcelink.json

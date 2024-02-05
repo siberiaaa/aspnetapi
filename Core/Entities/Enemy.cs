@@ -4,7 +4,8 @@ public class Enemy
 {
     public int ID { get; set; }
     public string Name { get; set; }
-    public string Level { get; set; }
-    public Reward Reward { get; set; }
+    public int HP { get; set; }
+    public int Level { get; set; }
+    public int Reward { get; set; } // ! Temporalmente int
     public string Abilities { get; set; }
 }

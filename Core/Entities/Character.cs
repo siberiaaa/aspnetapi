@@ -11,5 +11,5 @@ public class Character
     public int Strenght { get; set; }
     public int Agility { get; set; }
     public double Exp { get; set; }
-    public int InventoryID { get; set; }
+    //public int InventoryID { get; set; }
 }

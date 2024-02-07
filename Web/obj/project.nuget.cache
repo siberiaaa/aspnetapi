@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "/KVZDmxcnaa/mc5eC4oW/UaG7bYKzvr2W+DgtbAYY4EW8tpEtjxJ22Zxq2bV3TbbaKULvABLZNmWdhbs27GrNg==",
+  "dgSpecHash": "PR8LhwTjDgAxGRwU9dpBf/na1HECuKa5L8rLVxdX3nY5+og1dBIIhAW1XvM+oC/jN41ZpDn/3gNvY7bg6XSi5A==",
   "success": true,
-  "projectFilePath": "D:\\Siberia\\Estudios\\Gracosoft\\Nivel III\\Siberia 3\\ASP.NET Core\\Proyecto Clase\\Web\\Web.csproj",
+  "projectFilePath": "D:\\Siberia\\Estudios\\Gracosoft\\Nivel III\\Siberia 3\\ASP.NET Core\\Proyecto Clase\\web\\Web.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Siberia\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
     "C:\\Users\\Siberia\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",

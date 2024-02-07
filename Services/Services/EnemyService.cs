@@ -1,4 +1,5 @@
 using Core.Entities;
+using Core.Enum;
 using Core.Interfaces;
 using Core.Interfaces.Services;
 using Services.Validators;
@@ -65,7 +66,7 @@ public class EnemyService : IEnemyService
         return attack;
     }
 
-    public async Task<int> TakeDamage(int enemyId, int damage)
+    public async Task<IsAlive> TakeDamage(int enemyId, int damage)
     {
         Enemy enemy = await _unitOfWork.EnemyRepository.GetByIdAsync(enemyId);
 
@@ -73,17 +74,14 @@ public class EnemyService : IEnemyService
             throw new ArgumentException("Invalid enemy ID");
 
         enemy.HP = enemy.HP - damage;
+        await _unitOfWork.CommitAsync();
 
         if (enemy.HP <= 0)
         {
-            _unitOfWork.EnemyRepository.Remove(enemy);
-            await _unitOfWork.CommitAsync();
-            return enemy.Reward;
+            return IsAlive.no;
         }
 
-        await _unitOfWork.CommitAsync();
-
-        return -1;
+        return IsAlive.yes;
     }
 
 

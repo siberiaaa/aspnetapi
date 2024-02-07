@@ -1,5 +1,6 @@
 using Core.Entities;
 using Core.Interfaces;
+using Core.Enum;
 using Core.Interfaces.Services;
 using Services.Validators;
 
@@ -95,16 +96,44 @@ public class CharacterService : ICharacterService
         return await _unitOfWork.CharacterRepository.GetByIdAsync(characterId);
     }
 
-    public async Task<int> AttackEnemy(int characterId)
+    public async Task<string> AttackEnemy(int characterId, int enemyId)
     {
+        EnemyService _enemyService = new EnemyService(_unitOfWork);
+
+        Enemy enemy = await _enemyService.GetEnemyById(enemyId);
+
         Character character = await _unitOfWork.CharacterRepository.GetByIdAsync(characterId);
 
-        if (character == null)
-            throw new ArgumentException("Invalid Character ID");
+        if (character == null) throw new ArgumentException("Invalid character ID");
+        if (enemy == null) throw new ArgumentException("Invalid enemy ID");
 
-        int attack = (int)Math.Floor(character.Strenght * 0.25);
+        if (enemy.HP <= 0) return "You can't fight this enemy, it's weakened.";
         
-        return attack;
+        int attackPoints = (int)Math.Floor(character.Strenght * 0.25);
+
+        IsAlive attackresult = await _enemyService.TakeDamage(enemyId, attackPoints);
+
+        if (attackresult == IsAlive.no)
+        {
+            ItLeveledUp expResult = await UpdateExp(characterId, enemy.Reward);
+            
+            if (expResult == ItLeveledUp.yes)
+            {
+                return $"Damage given: {attackPoints} You defeated your enemy. Your reward is {enemy.Reward} exp. You leveled up!";
+            }
+            return $"Damage given: {attackPoints} You defeated your enemy. Your reward is {enemy.Reward} exp.";
+        }
+
+        int counterAttackPoints = await _enemyService.CounterAttack(enemyId);
+
+        IsAlive counterAttackResult = await TakeDamage(characterId, counterAttackPoints);
+
+        if (counterAttackResult == IsAlive.no)
+        {
+            return $"Damage given: {attackPoints}\nDamage taken: {counterAttackPoints}\nYou died.";
+        }
+        
+        return $"Damage given: {attackPoints}\nDamage taken: {counterAttackPoints}.";
     }
 
     public async Task<Character> Heal(int characterId)
@@ -129,7 +158,7 @@ public class CharacterService : ICharacterService
         return await _unitOfWork.CharacterRepository.GetByIdAsync(characterId);
     }
 
-    public async Task<int> TakeDamage(int characterId, int damage)
+    public async Task<IsAlive> TakeDamage(int characterId, int damage)
     {
         Character character = await _unitOfWork.CharacterRepository.GetByIdAsync(characterId);
 
@@ -142,15 +171,14 @@ public class CharacterService : ICharacterService
         {
             _unitOfWork.CharacterRepository.Remove(character);
             await _unitOfWork.CommitAsync();
-            return 1;
+            return IsAlive.no;
         }
 
         await _unitOfWork.CommitAsync();
-
-        return -1;
+        return IsAlive.yes;
     }
 
-    public async Task<int> UpdateExp(int characterId, int exp)
+    public async Task<ItLeveledUp> UpdateExp(int characterId, int exp)
     {
         Character character = await _unitOfWork.CharacterRepository.GetByIdAsync(characterId);
 
@@ -162,12 +190,12 @@ public class CharacterService : ICharacterService
         if (character.Exp >= 100)
         {
            await LevelUp(characterId);
-           return 1;
+           return ItLeveledUp.yes;
         }
 
         await _unitOfWork.CommitAsync();
 
-        return -1;
+        return ItLeveledUp.no;
     }
 
 }

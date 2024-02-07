@@ -1,4 +1,5 @@
 using Core.Entities;
+using Core.Enum;
 
 namespace Core.Interfaces.Services;
 
@@ -10,6 +11,6 @@ public interface IEnemyService
     Task<Enemy> UpdateEnemy(int enemyToBeUpdatedId, Enemy newEnemyValues);
     Task DeleteEnemy(int enemyId);
     Task<int> CounterAttack(int enemyId);
-    Task<int> TakeDamage(int enemyId, int damage);
+    Task<IsAlive> TakeDamage(int enemyId, int damage);
     
 }

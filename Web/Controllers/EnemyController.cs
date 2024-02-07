@@ -33,6 +33,22 @@ public class EnemyController : ControllerBase
         return Ok(Enemy);
     }
 
+    [HttpPut]
+    public async Task<ActionResult<Enemy>> Put([FromBody] Enemy enemy)
+    {
+        try
+        {
+            Enemy createdEnemy = await _service.CreateEnemy(enemy);
+
+            return Ok(createdEnemy);
+        }
+        catch (Exception ex)
+        {
+            return BadRequest(ex.Message);
+        }
+
+    }
+
     [HttpDelete("{id}")]
     public async Task<ActionResult<Enemy>> Delete(int id)
     {

@@ -18,10 +18,13 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
 builder.Services.AddScoped(typeof(IBaseRepository<>), typeof(BaseRepository<>));
 builder.Services.AddScoped(typeof(ICharacterRepository), typeof(CharacterRepository));
-builder.Services.AddScoped(typeof(IEnemyRepository), typeof(EnemyRepository));
 builder.Services.AddScoped(typeof(ICharacterService), typeof(CharacterService));
-builder.Services.AddScoped(typeof(ICharacterTypeService), typeof(CharacterTypeService));
+builder.Services.AddScoped(typeof(IEnemyRepository), typeof(EnemyRepository));
 builder.Services.AddScoped(typeof(IEnemyService), typeof(EnemyService));
+builder.Services.AddScoped(typeof(ICharacterTypeRepository), typeof(CharacterTypeRepository));
+builder.Services.AddScoped(typeof(ICharacterTypeService), typeof(CharacterTypeService));
+
+
 
 builder.Services.AddDbContext<AppDbContext>(options =>
                     options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))

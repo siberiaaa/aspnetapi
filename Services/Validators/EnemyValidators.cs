@@ -5,7 +5,7 @@ namespace Services.Validators;
 
 public class EnemyValidators : AbstractValidator<Enemy>
     {
-        public void CharacterValidator()
+        public EnemyValidators()
         {
             RuleFor(x => x.Level)
                 .LessThanOrEqualTo(99)

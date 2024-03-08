@@ -16,6 +16,13 @@ public class EnemyController : ControllerBase
         _service = enemyService;
     }
 
+    /// <summary>
+    /// Method to get a list of all enemies.
+    /// </summary>
+    /// <returns>IEnumerable of enemies</returns>
+    /// <remarks>
+    /// Doesn't need parameters.
+    /// </remarks>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Enemy>>> Get()
     {
@@ -25,20 +32,30 @@ public class EnemyController : ControllerBase
         return Ok(Enemies);
     }
 
+/// <summary>
+/// Method to get an enemy.
+/// </summary>
+/// <param name="id"></param>
+/// <returns>Enemy object</returns>
     [HttpGet("{id}")]
     public async Task<ActionResult<IEnumerable<Enemy>>> Get(int id)
     {
-        var Enemy = await _service.GetEnemyById(id);
+        var Enemy = await _service.GetById(id);
 
         return Ok(Enemy);
     }
 
+/// <summary>
+/// Method to create an enemy.
+/// </summary>
+/// <param name="enemy"></param>
+/// <returns>Enemy object</returns>
     [HttpPut]
     public async Task<ActionResult<Enemy>> Put([FromBody] Enemy enemy)
     {
         try
         {
-            Enemy createdEnemy = await _service.CreateEnemy(enemy);
+            Enemy createdEnemy = await _service.Create(enemy);
 
             return Ok(createdEnemy);
         }
@@ -49,12 +66,37 @@ public class EnemyController : ControllerBase
 
     }
 
+/// <summary>
+/// Method to update an enemy.
+/// </summary>
+/// <param name="id"></param>
+/// <param name="enemy"></param>
+/// <returns>Enemy object</returns>
+    [HttpPut("{id}")]
+    public async Task<ActionResult<Enemy>> Put(int id, [FromBody] Enemy enemy)
+    {
+        try
+        {
+            Enemy updatedEnemy = await _service.Update(id, enemy);
+            return updatedEnemy;
+        }
+        catch(Exception ex)
+        {
+           return BadRequest(ex.Message); 
+        }
+    }
+
+/// <summary>
+/// Method to delete an enemy.
+/// </summary>
+/// <param name="id"></param>
+/// <returns>Confirmation string.</returns>
     [HttpDelete("{id}")]
     public async Task<ActionResult<Enemy>> Delete(int id)
     {
         try
         {
-            await _service.DeleteEnemy(id);
+            await _service.Delete(id);
             return Ok("Enemy deleted");
         }
         catch(Exception ex)

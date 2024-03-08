@@ -16,6 +16,7 @@ public class EnemyConfig : IEntityTypeConfiguration<Enemy>
             .UseIdentityColumn();
 
         builder.Property(p => p.Name).IsRequired().HasMaxLength(255);
+        builder.Property(p => p.UrlImage);
         builder.Property(p => p.HP).IsRequired();
         builder.Property(p => p.Level).IsRequired();
         builder.Property(p => p.Reward).IsRequired();

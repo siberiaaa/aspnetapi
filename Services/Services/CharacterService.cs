@@ -14,7 +14,7 @@ public class CharacterService : ICharacterService
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<Character> CreateCharacter(Character newCharacter)
+    public async Task<Character> Create(Character newCharacter)
     {
         CharacterValidators validator = new();
 
@@ -32,7 +32,7 @@ public class CharacterService : ICharacterService
         return newCharacter;
     }
 
-    public async Task DeleteCharacter(int characterId)
+    public async Task Delete(int characterId)
     {
         Character character = await _unitOfWork.CharacterRepository.GetByIdAsync(characterId);
         _unitOfWork.CharacterRepository.Remove(character);
@@ -44,12 +44,12 @@ public class CharacterService : ICharacterService
         return await _unitOfWork.CharacterRepository.GetAllAsync();
     }
 
-    public async Task<Character> GetCharacterById(int id)
+    public async Task<Character> GetById(int id)
     {
         return await _unitOfWork.CharacterRepository.GetByIdAsync(id);
     }
 
-    public async Task<Character> UpdateCharacter(int characterToBeUpdatedId, Character newCharacterValues)
+    public async Task<Character> Update(int characterToBeUpdatedId, Character newCharacterValues)
     {
         CharacterValidators CharacterValidator = new();
         
@@ -63,6 +63,7 @@ public class CharacterService : ICharacterService
             throw new ArgumentException("Invalid Character ID while updating");
 
         CharacterToBeUpdated.Name = newCharacterValues.Name;
+        CharacterToBeUpdated.UrlImage = newCharacterValues.UrlImage;
         CharacterToBeUpdated.Level = newCharacterValues.Level;
         CharacterToBeUpdated.HP = newCharacterValues.HP;
         CharacterToBeUpdated.MP = newCharacterValues.MP;
@@ -98,9 +99,12 @@ public class CharacterService : ICharacterService
 
     public async Task<string> AttackEnemy(int characterId, int enemyId)
     {
+        //Es para que retornara el attack response
+        //AttackResponse = new AttackResponse();
+
         EnemyService _enemyService = new EnemyService(_unitOfWork);
 
-        Enemy enemy = await _enemyService.GetEnemyById(enemyId);
+        Enemy enemy = await _enemyService.GetById(enemyId);
 
         Character character = await _unitOfWork.CharacterRepository.GetByIdAsync(characterId);
 

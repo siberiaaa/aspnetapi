@@ -3,13 +3,8 @@ using Core.Enum;
 
 namespace Core.Interfaces.Services;
 
-public interface ICharacterService
+public interface ICharacterService : IBaseService<Character>
 {
-    Task<Character> GetCharacterById(int id);
-    Task<IEnumerable<Character>> GetAll();
-    Task<Character> CreateCharacter(Character newCharacter);
-    Task<Character> UpdateCharacter(int characterToBeUpdatedId, Character newCharacterValues);
-    Task DeleteCharacter(int personajeId);
     Task<Character> LevelUp(int characterId);
     Task<string> AttackEnemy(int characterId, int enemyId);
     Task<Character> Heal(int characterId);

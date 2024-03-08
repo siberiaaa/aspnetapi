@@ -9,10 +9,5 @@ public class CharacterRepository : BaseRepository<Character>, ICharacterReposito
     public CharacterRepository(AppDbContext context) : base(context)
     {
 
-    }
-
-    // public Task LevelUp(Character character)
-    // {
-    //     throw new NotImplementedException();
-    // }
+    } 
 }

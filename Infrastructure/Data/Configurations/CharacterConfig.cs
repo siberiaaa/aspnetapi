@@ -26,12 +26,19 @@ public class CharacterConfig : IEntityTypeConfiguration<Character>
             .HasMaxLength(255);
 
         builder.Property(p => p.Level).IsRequired();
+        builder.Property(p => p.UrlImage);
+        builder.Property(p => p.CharacterTypeId).IsRequired();
         builder.Property(p => p.HP).IsRequired();
         builder.Property(p => p.MP).IsRequired();
         builder.Property(p => p.IQ).IsRequired();
         builder.Property(p => p.Strenght).IsRequired();
         builder.Property(p => p.Agility).IsRequired();
         builder.Property(p => p.Exp).IsRequired();
+
+        builder
+            .HasOne(x => x.CharacterType)
+            .WithMany(x => x.Characters)
+            .HasForeignKey(x => x.CharacterTypeId);
 
         builder.ToTable("Character");
     }

@@ -5,7 +5,7 @@ namespace Services.Validators;
 
 public class CharacterValidators : AbstractValidator<Character>
     {
-        public void CharacterValidator()
+        public CharacterValidators()
         {
             RuleFor(x => x.HP)
                 .LessThanOrEqualTo(100)

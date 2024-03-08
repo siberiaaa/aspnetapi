@@ -1,6 +1,5 @@
 using Core.Entities;
 using Core.Interfaces.Services;
-using Infrastructure.Migrations;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -16,6 +15,13 @@ public class CharacterController : ControllerBase
         _service = characterService;
     }
 
+/// <summary>
+/// Method to get a list of all characters.
+/// </summary>
+/// <returns>IEnumerable of characters</returns>
+/// <remarks>
+/// Doesn't need parameters.
+/// </remarks>
     [HttpGet]
     public async Task<ActionResult<IEnumerable<Character>>> Get()
     {
@@ -25,20 +31,30 @@ public class CharacterController : ControllerBase
         return Ok(Characters);
     }
 
+/// <summary>
+/// Method to get an character.
+/// </summary>
+/// <param name="id"></param>
+/// <returns>Character object</returns>
     [HttpGet("{id}")]
     public async Task<ActionResult<IEnumerable<Character>>> Get(int id)
     {
-        var Character = await _service.GetCharacterById(id);
+        var Character = await _service.GetById(id);
 
         return Ok(Character);
     }
 
+/// <summary>
+/// Method to create a character.
+/// </summary>
+/// <param name="character"></param>
+/// <returns>Character object</returns>
     [HttpPost]
     public async Task<ActionResult<Character>> Post([FromBody] Character character)
     {
         try
         {
-            var createdCharacter = await _service.CreateCharacter(character);
+            var createdCharacter = await _service.Create(character);
 
             return Ok(createdCharacter);
         }
@@ -48,13 +64,18 @@ public class CharacterController : ControllerBase
         }
     }
 
-
+/// <summary>
+/// Method to update a character.
+/// </summary>
+/// <param name="id"></param>
+/// <param name="character"></param>
+/// <returns>Character object</returns>
     [HttpPut("{id}")]
     public async Task<ActionResult<Character>> Put(int id, [FromBody] Character character)
     {
         try
         {
-            Character updatedCharacter = await _service.UpdateCharacter(id, character);
+            Character updatedCharacter = await _service.Update(id, character);
             return updatedCharacter;
         }
         catch(Exception ex)
@@ -63,12 +84,17 @@ public class CharacterController : ControllerBase
         }
     }
 
+/// <summary>
+/// Method to delete a character.
+/// </summary>
+/// <param name="id"></param>
+/// <returns>Confirmation string.</returns>
     [HttpDelete("{id}")]
     public async Task<ActionResult<Character>> Delete(int id)
     {
         try
         {
-            await _service.DeleteCharacter(id);
+            await _service.Delete(id);
             return Ok("Character deleted");
         }
         catch(Exception ex)
@@ -77,6 +103,15 @@ public class CharacterController : ControllerBase
         }
     }
 
+/// <summary>
+/// Method to attack an enemy.
+/// </summary>
+/// <param name="idCharacter"></param>
+/// <param name="idEnemy"></param>
+/// <returns>Attack result string.</returns>
+/// <remarks> 
+/// Enemies can counterattack.
+/// </remarks>
     [HttpPost("AttackEnemy")]
     public async Task<ActionResult<Character>> AttackEnemy(int idCharacter, int idEnemy)
     {
@@ -91,6 +126,14 @@ public class CharacterController : ControllerBase
         }
     }
 
+/// <summary>
+/// Method to heal a character.
+/// </summary>
+/// <param name="idCharacter"></param>
+/// <returns>Character object.</returns>
+/// <remarks> 
+/// Heal is an ability to gain HP in exchange of MP.
+/// </remarks>
     [HttpPost("Heal")]
     public async Task<ActionResult<Character>> Heal(int idCharacter)
     {
@@ -106,6 +149,5 @@ public class CharacterController : ControllerBase
             return BadRequest(ex.Message);
         }
     }
-
 
 }

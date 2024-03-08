@@ -14,7 +14,7 @@ public class EnemyService : IEnemyService
         _unitOfWork = unitOfWork;
     }
 
-    public async Task<Enemy> GetEnemyById(int id)
+    public async Task<Enemy> GetById(int id)
     {
         return await _unitOfWork.EnemyRepository.GetByIdAsync(id);
     }
@@ -24,7 +24,7 @@ public class EnemyService : IEnemyService
         return await _unitOfWork.EnemyRepository.GetAllAsync();
     }
 
-    public async Task<Enemy> CreateEnemy(Enemy newEnemy)
+    public async Task<Enemy> Create(Enemy newEnemy)
     {
         EnemyValidators validator = new();
 
@@ -42,12 +42,32 @@ public class EnemyService : IEnemyService
         return newEnemy;
     }
 
-    public async Task<Enemy> UpdateEnemy(int enemyToBeUpdatedId, Enemy newEnemyValues)
+    public async Task<Enemy> Update(int enemyToBeUpdatedId, Enemy newEnemyValues)
     {
-        throw new NotImplementedException();
+        EnemyValidators EnemyValidators = new();
+        
+        var validationResult = await EnemyValidators.ValidateAsync(newEnemyValues);
+        if (!validationResult.IsValid)
+            throw new ArgumentException(validationResult.Errors.ToString());
+
+        Enemy EnemyToBeUpdated = await _unitOfWork.EnemyRepository.GetByIdAsync(enemyToBeUpdatedId);
+
+        if (EnemyToBeUpdated == null)
+            throw new ArgumentException("Invalid Enemy ID while updating");
+
+        EnemyToBeUpdated.Name = newEnemyValues.Name;
+        EnemyToBeUpdated.UrlImage = newEnemyValues.UrlImage;
+        EnemyToBeUpdated.Level = newEnemyValues.Level;
+        EnemyToBeUpdated.HP = newEnemyValues.HP;
+        EnemyToBeUpdated.Reward = newEnemyValues.Reward;
+        EnemyToBeUpdated.Abilities = newEnemyValues.Abilities;
+
+        await _unitOfWork.CommitAsync();
+
+        return await _unitOfWork.EnemyRepository.GetByIdAsync(enemyToBeUpdatedId);
     }
 
-    public async Task DeleteEnemy(int enemyId)
+    public async Task Delete(int enemyId)
     {
         Enemy enemy = await _unitOfWork.EnemyRepository.GetByIdAsync(enemyId);
         _unitOfWork.EnemyRepository.Remove(enemy);

@@ -9,6 +9,7 @@ public class UnitOfWork : IUnitOfWork
         private readonly AppDbContext _context;
         private CharacterRepository  _characterRepository;
         private EnemyRepository  _enemyRepository;
+        private CharacterTypeRepository  _characterTypeRepository;
         
         public UnitOfWork(AppDbContext context)
         {
@@ -19,6 +20,8 @@ public class UnitOfWork : IUnitOfWork
         public ICharacterRepository CharacterRepository => _characterRepository ??= new CharacterRepository(_context);
 
         public IEnemyRepository EnemyRepository => _enemyRepository ??= new EnemyRepository(_context);
+
+        public ICharacterTypeRepository CharacterTypeRepository => _characterTypeRepository ??= new CharacterTypeRepository(_context);
 
         public async Task<int> CommitAsync()
             {

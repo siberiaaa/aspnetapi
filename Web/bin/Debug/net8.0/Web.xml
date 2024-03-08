@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Web</name>
+    </assembly>
+    <members>
+        <member name="M:Web.Controllers.CharacterController.Get">
+            <summary>
+            Method to get a list of all characters.
+            </summary>
+            <returns>IEnumerable of characters</returns>
+            <remarks>
+            Doesn't need parameters.
+            </remarks>
+        </member>
+        <member name="M:Web.Controllers.CharacterController.Get(System.Int32)">
+            <summary>
+            Method to get an character.
+            </summary>
+            <param name="id"></param>
+            <returns>Character object</returns>
+        </member>
+        <member name="M:Web.Controllers.CharacterController.Post(Core.Entities.Character)">
+            <summary>
+            Method to create a character.
+            </summary>
+            <param name="character"></param>
+            <returns>Character object</returns>
+        </member>
+        <member name="M:Web.Controllers.CharacterController.Put(System.Int32,Core.Entities.Character)">
+            <summary>
+            Method to update a character.
+            </summary>
+            <param name="id"></param>
+            <param name="character"></param>
+            <returns>Character object</returns>
+        </member>
+        <member name="M:Web.Controllers.CharacterController.Delete(System.Int32)">
+            <summary>
+            Method to delete a character.
+            </summary>
+            <param name="id"></param>
+            <returns>Confirmation string.</returns>
+        </member>
+        <member name="M:Web.Controllers.CharacterController.AttackEnemy(System.Int32,System.Int32)">
+            <summary>
+            Method to attack an enemy.
+            </summary>
+            <param name="idCharacter"></param>
+            <param name="idEnemy"></param>
+            <returns>Attack result string.</returns>
+            <remarks> 
+            Enemies can counterattack.
+            </remarks>
+        </member>
+        <member name="M:Web.Controllers.CharacterController.Heal(System.Int32)">
+            <summary>
+            Method to heal a character.
+            </summary>
+            <param name="idCharacter"></param>
+            <returns>Character object.</returns>
+            <remarks> 
+            Heal is an ability to gain HP in exchange of MP.
+            </remarks>
+        </member>
+        <member name="M:Web.Controllers.CharacterTypeController.Get">
+            <summary>
+            Method to get a list of all character types.
+            </summary>
+            <returns>IEnumerable of character types</returns>
+            <remarks>
+            Doesn't need parameters.
+            </remarks>
+        </member>
+        <member name="M:Web.Controllers.CharacterTypeController.Get(System.Int32)">
+            <summary>
+            Method to get a character types.
+            </summary>
+            <param name="id"></param>
+            <returns>CharacterType object</returns>
+        </member>
+        <member name="M:Web.Controllers.CharacterTypeController.Put(Core.Entities.CharacterType)">
+            <summary>
+            Method to create a character type.
+            </summary>
+            <param name="characterType"></param>
+            <returns>Character type object</returns>
+        </member>
+        <member name="M:Web.Controllers.CharacterTypeController.Put(System.Int32,Core.Entities.CharacterType)">
+            <summary>
+            Method to update a character type.
+            </summary>
+            <param name="id"></param>
+            <param name="characterType"></param>
+            <returns>CharacterType object</returns>
+        </member>
+        <member name="M:Web.Controllers.CharacterTypeController.Delete(System.Int32)">
+            <summary>
+            Method to delete a character type.
+            </summary>
+            <param name="id"></param>
+            <returns>Confirmation string.</returns>
+        </member>
+        <member name="M:Web.Controllers.EnemyController.Get">
+            <summary>
+            Method to get a list of all enemies.
+            </summary>
+            <returns>IEnumerable of enemies</returns>
+            <remarks>
+            Doesn't need parameters.
+            </remarks>
+        </member>
+        <member name="M:Web.Controllers.EnemyController.Get(System.Int32)">
+            <summary>
+            Method to get an enemy.
+            </summary>
+            <param name="id"></param>
+            <returns>Enemy object</returns>
+        </member>
+        <member name="M:Web.Controllers.EnemyController.Put(Core.Entities.Enemy)">
+            <summary>
+            Method to create an enemy.
+            </summary>
+            <param name="enemy"></param>
+            <returns>Enemy object</returns>
+        </member>
+        <member name="M:Web.Controllers.EnemyController.Put(System.Int32,Core.Entities.Enemy)">
+            <summary>
+            Method to update an enemy.
+            </summary>
+            <param name="id"></param>
+            <param name="enemy"></param>
+            <returns>Enemy object</returns>
+        </member>
+        <member name="M:Web.Controllers.EnemyController.Delete(System.Int32)">
+            <summary>
+            Method to delete an enemy.
+            </summary>
+            <param name="id"></param>
+            <returns>Confirmation string.</returns>
+        </member>
+    </members>
+</doc>

@@ -10,6 +10,7 @@ public class UnitOfWork : IUnitOfWork
         private CharacterRepository  _characterRepository;
         private EnemyRepository  _enemyRepository;
         private CharacterTypeRepository  _characterTypeRepository;
+        private UserRepository  _userRepository;
         
         public UnitOfWork(AppDbContext context)
         {
@@ -22,7 +23,7 @@ public class UnitOfWork : IUnitOfWork
         public IEnemyRepository EnemyRepository => _enemyRepository ??= new EnemyRepository(_context);
 
         public ICharacterTypeRepository CharacterTypeRepository => _characterTypeRepository ??= new CharacterTypeRepository(_context);
-
+        public IUserRepository UserRepository => _userRepository ??= new UserRepository(_context);
         public async Task<int> CommitAsync()
             {
                 return await _context.SaveChangesAsync();

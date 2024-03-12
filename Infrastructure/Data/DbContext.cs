@@ -10,6 +10,7 @@ public class AppDbContext : DbContext
     public DbSet<Character> Characters { get; set; }
     public DbSet<Enemy> Enemies { get; set; }
     public DbSet<CharacterType> CharacterTypes { get; set; }
+    public DbSet<User> Users { get; set; }
 
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
@@ -19,6 +20,7 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder builder)
     {
         builder.ApplyConfiguration(new CharacterConfig());
+        builder.ApplyConfiguration(new UserConfig());
         builder.ApplyConfiguration(new EnemyConfig());
         builder.ApplyConfiguration(new CharacterTypeConfig());
 

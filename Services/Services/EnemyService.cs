@@ -81,7 +81,7 @@ public class EnemyService : IEnemyService
         if (enemy == null)
             throw new ArgumentException("Invalid enemy ID");
 
-        int attack = (int)Math.Floor(enemy.Level * 0.5);
+        int attack = (int)Math.Floor(enemy.Level * 1.15);
         
         return attack;
     }

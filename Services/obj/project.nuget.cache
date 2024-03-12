@@ -1,10 +1,18 @@
 {
   "version": 2,
-  "dgSpecHash": "9vj8Qb8FE99Xj9lz+WwWEJ4GTrxUaa3d5MWsBanMdYCACKAqF5VMWvwUigr0DXXbSRqC8zY30zlZFbgcW9O+vw==",
+  "dgSpecHash": "Koz2IBSEK4Z5V5K0ib0XqaSrgOmyY6KmjwkcG6+h3XwFqhJB3R4+lXcia+gH6B4juRiB4mB8FygtPPQ4sXuXzQ==",
   "success": true,
   "projectFilePath": "D:\\Siberia\\Estudios\\Gracosoft\\Nivel III\\Siberia 3\\ASP.NET Core\\Proyecto Clase\\Services\\Services.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Siberia\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512"
+    "C:\\Users\\Siberia\\.nuget\\packages\\fluentvalidation\\11.9.0\\fluentvalidation.11.9.0.nupkg.sha512",
+    "C:\\Users\\Siberia\\.nuget\\packages\\microsoft.aspnetcore.authentication.jwtbearer\\8.0.2\\microsoft.aspnetcore.authentication.jwtbearer.8.0.2.nupkg.sha512",
+    "C:\\Users\\Siberia\\.nuget\\packages\\microsoft.identitymodel.abstractions\\7.1.2\\microsoft.identitymodel.abstractions.7.1.2.nupkg.sha512",
+    "C:\\Users\\Siberia\\.nuget\\packages\\microsoft.identitymodel.jsonwebtokens\\7.1.2\\microsoft.identitymodel.jsonwebtokens.7.1.2.nupkg.sha512",
+    "C:\\Users\\Siberia\\.nuget\\packages\\microsoft.identitymodel.logging\\7.1.2\\microsoft.identitymodel.logging.7.1.2.nupkg.sha512",
+    "C:\\Users\\Siberia\\.nuget\\packages\\microsoft.identitymodel.protocols\\7.1.2\\microsoft.identitymodel.protocols.7.1.2.nupkg.sha512",
+    "C:\\Users\\Siberia\\.nuget\\packages\\microsoft.identitymodel.protocols.openidconnect\\7.1.2\\microsoft.identitymodel.protocols.openidconnect.7.1.2.nupkg.sha512",
+    "C:\\Users\\Siberia\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.1.2\\microsoft.identitymodel.tokens.7.1.2.nupkg.sha512",
+    "C:\\Users\\Siberia\\.nuget\\packages\\system.identitymodel.tokens.jwt\\7.1.2\\system.identitymodel.tokens.jwt.7.1.2.nupkg.sha512"
   ],
   "logs": []
 }

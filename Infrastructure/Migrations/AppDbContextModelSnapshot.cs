@@ -122,6 +122,29 @@ namespace Infrastructure.Migrations
                     b.ToTable("Enemy", (string)null);
                 });
 
+            modelBuilder.Entity("Core.Entities.User", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("integer");
+
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("ID"));
+
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
+
+                    b.Property<string>("Username")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Users", (string)null);
+                });
+
             modelBuilder.Entity("Core.Entities.Character", b =>
                 {
                     b.HasOne("Core.Entities.CharacterType", "CharacterType")

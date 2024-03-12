@@ -50,8 +50,8 @@ public class EnemyController : ControllerBase
 /// </summary>
 /// <param name="enemy"></param>
 /// <returns>Enemy object</returns>
-    [HttpPut]
-    public async Task<ActionResult<Enemy>> Put([FromBody] Enemy enemy)
+    [HttpPost]
+    public async Task<ActionResult<Enemy>> Post([FromBody] Enemy enemy)
     {
         try
         {

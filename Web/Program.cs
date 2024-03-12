@@ -23,6 +23,8 @@ builder.Services.AddScoped(typeof(IEnemyRepository), typeof(EnemyRepository));
 builder.Services.AddScoped(typeof(IEnemyService), typeof(EnemyService));
 builder.Services.AddScoped(typeof(ICharacterTypeRepository), typeof(CharacterTypeRepository));
 builder.Services.AddScoped(typeof(ICharacterTypeService), typeof(CharacterTypeService));
+builder.Services.AddScoped(typeof(IUserRepository), typeof(UserRepository));
+builder.Services.AddScoped(typeof(IUserService), typeof(UserService));
 
 
 

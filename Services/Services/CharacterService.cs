@@ -1,4 +1,5 @@
 using Core.Entities;
+using Core.Responses;
 using Core.Interfaces;
 using Core.Enum;
 using Core.Interfaces.Services;
@@ -26,7 +27,8 @@ public class CharacterService : ICharacterService
         }
         else
         {
-            throw new ArgumentException(validationResult.Errors.ToString());
+           
+            throw new ArgumentException(validationResult.Errors[0].ErrorMessage.ToString());
         }
 
         return newCharacter;
@@ -113,7 +115,7 @@ public class CharacterService : ICharacterService
 
         if (enemy.HP <= 0) return "You can't fight this enemy, it's weakened.";
         
-        int attackPoints = (int)Math.Floor(character.Strenght * 0.25);
+        int attackPoints = (int)Math.Floor(character.Strenght * 1.25);
 
         IsAlive attackresult = await _enemyService.TakeDamage(enemyId, attackPoints);
 

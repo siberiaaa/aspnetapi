@@ -50,8 +50,8 @@ public class CharacterTypeController : ControllerBase
 /// </summary>
 /// <param name="characterType"></param>
 /// <returns>Character type object</returns>
-    [HttpPut]
-    public async Task<ActionResult<CharacterType>> Put([FromBody] CharacterType characterType)
+    [HttpPost]
+    public async Task<ActionResult<CharacterType>> Post([FromBody] CharacterType characterType)
     {
         try
         {

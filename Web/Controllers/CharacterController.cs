@@ -113,12 +113,13 @@ public class CharacterController : ControllerBase
 /// Enemies can counterattack.
 /// </remarks>
     [HttpPost("AttackEnemy")]
-    public async Task<ActionResult<Character>> AttackEnemy(int idCharacter, int idEnemy)
+    public async Task<ActionResult<string>> AttackEnemy(int idCharacter, int idEnemy)
     {
         try
         {
             string result = await _service.AttackEnemy(idCharacter, idEnemy);
             return Ok(result);
+            //return Ok(new{result}); tonto json 
         }
         catch (Exception ex)
         {

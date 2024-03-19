@@ -37,7 +37,7 @@ public class CharacterConfig : IEntityTypeConfiguration<Character>
 
         builder
             .HasOne(x => x.CharacterType)
-            .WithMany(x => x.Characters)
+            .WithMany()
             .HasForeignKey(x => x.CharacterTypeId);
 
         builder.ToTable("Character");

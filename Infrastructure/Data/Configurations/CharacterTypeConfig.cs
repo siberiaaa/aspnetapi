@@ -29,9 +29,9 @@ public class CharacterTypeConfig : IEntityTypeConfiguration<CharacterType>
 
         builder.Property(p => p.Name).IsRequired();
 
-        builder
-            .HasMany(x => x.Characters)
-            .WithOne(x => x.CharacterType).HasForeignKey(x => x.CharacterTypeId);
+        // builder
+        //     .HasMany(x => x.Characters)
+        //     .WithOne(x => x.CharacterType).HasForeignKey(x => x.CharacterTypeId);
    
 
         builder.ToTable("CharacterType");

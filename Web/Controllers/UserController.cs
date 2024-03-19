@@ -1,8 +1,9 @@
-using Microsoft.AspNetCore.Authorization;
+//using Microsoft.AspNetCore.Authorization; este es el authorize de tal
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Core.Entities;
 using Core.Interfaces.Services;
+using Web.Helpers;
 
 namespace Web.Controllers;
 
@@ -15,9 +16,8 @@ public class UserController : ControllerBase
     {
         _service = userService;
     }
-
+    
     [HttpPost("Login")]
-    [AllowAnonymous]
     public async Task<IActionResult> Login([FromBody] User user)
     {
         var token = await _service.Login(user.Username, user.Password);
@@ -54,6 +54,7 @@ public class UserController : ControllerBase
     /// <param name="id"></param>
     /// <param name="user"></param>
     /// <returns>Enemy object</returns>
+    [Authorize]
     [HttpPut("{id}")]
     public async Task<ActionResult<User>> Put(int id, [FromBody] User user)
     {

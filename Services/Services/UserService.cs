@@ -7,6 +7,7 @@ using Core.Entities;
 using Core.Interfaces;
 using Core.Interfaces.Services;
 using Services.Validators;
+using System.Reflection;
 
 namespace Services.Services;
 
@@ -56,12 +57,9 @@ public class UserService : IUserService
         return await _unitOfWork.UserRepository.GetByIdAsync(userToBeUpdatedId);
     }
 
-    public Task<User> GetById(int id)
+    public async Task<User> GetById(int id)
     {
-        throw new NotImplementedException();
-        //Este sería de uso para el login no mas?
-        //return await _unitOfWork.UserRepository.GetByIdAsync(id);
-        //Ahora creo que no
+        return await _unitOfWork.UserRepository.GetByIdAsync(id);
     }
 
     public async Task<string> Login(string username, string password)
@@ -79,9 +77,10 @@ public class UserService : IUserService
         {
             Subject = new ClaimsIdentity(new Claim[]
             {
-                    new Claim(ClaimTypes.Name, user.Username)
+                    new Claim(ClaimTypes.Name, user.Username),
+                    new Claim("id", user.ID.ToString())
             }),
-            Expires = DateTime.UtcNow.AddMinutes(30),
+            Expires = DateTime.UtcNow.AddMinutes(10),
             SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
         };
         var token = tokenHandler.CreateToken(tokenDescriptor);
@@ -93,6 +92,7 @@ public class UserService : IUserService
     {
         throw new NotImplementedException();
         //algo sobre invalidar el jwt que no sé
+        //por ahora no
     }
 
 

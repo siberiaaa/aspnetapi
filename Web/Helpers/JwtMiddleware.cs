@@ -10,12 +10,12 @@ namespace Web.Helpers
     public class JwtMiddleware
     {
         private readonly RequestDelegate _next;
-        private IUserService _service;
+        // private IUserService _service;
         private readonly IConfiguration _configuration;
 
-        public JwtMiddleware(RequestDelegate next, IConfiguration configuration, IUserService userService)
+        public JwtMiddleware(RequestDelegate next, IConfiguration configuration)
         {
-            _service = userService;
+            // _service = userService;
             _next = next;
             _configuration = configuration;
         }
@@ -53,7 +53,7 @@ namespace Web.Helpers
 
                 //Attach user to context on successful JWT validation
                 //llamada a la base de datos
-                var user = await _service.GetById(userId);
+                var user = await userService.GetById(userId);
 
                 if (user != null) context.Items["ok"] = true;
             }
